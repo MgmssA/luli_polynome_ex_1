@@ -1,0 +1,218 @@
+---
+title: | 
+    <p>![](style/mgmss_brand_color.png){width=40px}</p>
+    Polynom, Tangente und Linearfunktion
+subtitle: Eine Mathematikaufgabe aus der Stufe 11
+date: 2025-09-06
+date-modified: 2025-09-06
+author: Călin Drăgan  
+lang: de 
+abstract: In diesem Dokument ist ein Lösungsvorschlag für eine Mathematikaufgabe aus der Stufe 11 gezeigt. Die Lösung gründet auf ein algebraisches Vorgehen und einfachen Aspekten der Integral- und Differenzialrechnung.    
+title-block-banner: true
+format: 
+    html: 
+        toc: true
+        toc-depth: 5
+        toc-location: right
+        appendix-style: default
+        callout-appearance: default
+        callout-icon: false
+        html-math-method: katex
+        # embed-resources: true
+        # self-contained-math: true
+engine: knitr
+brand: style/_brand.yml
+filters: 
+  - highlight-text
+css: style/style.css
+---
+
+## Die Aufgabe
+
+In @fig-exercise siehst Du den Originaltext der Mathematikaufgabe. 
+
+:::{#fig-exercise}
+![](img/exercise.jpg){width=80%}
+
+Mathematikaufgabe zur Kurvendiskussion aus der Stufe 11. Die Quelle ist unbekannt.
+:::
+
+Schauen wir uns zuerst an, was verlangt wird. Gegeben ist also die Funktion $f$, dass die Funktionswerte 
+
+$$
+f(x) = \frac{1}{3}x^3 - \frac{2}{3}x^2 - \frac{5}{3}x + 2,
+$$ {#eq-exercise}
+
+produziert. Diese gehört zur Gruppe der Polynomfunktionen und der dazugehörige Graph ist $G_f$. 
+
+Im Koordinatensystem wird auch der Graph $G_g$ der gesuchten Funktion $g$ gezeigt. Diese ist eine lineare Funktion und scheint parallel zu einer gestrichelten linearen Funktion, dass $f$ an einer bestimmten Stelle berührt. Dies gestrichelte Funktion, nennen wir sie $h$, schneidet $f$ auf der x-Achse. 
+
+Die Aufgabe ist, die Gleichung der Funktion $g$ zu bestimmen.
+
+## Fakten sammeln
+
+Zuerst stellen wir fest was wir wissen.
+
+- Funktion $f$ ist ein Polynom mit drei Nullstellen: $x_1 = \text{?}$, $x_2 = 1$ und $x_3 = \text{?}$.
+- Funktion $g$ ist linear und parallel zu $h$, knapp ausgedrückt $g \parallel h$. Sie schneidet die y-Achse bei $(0, -1)$.
+- Funktion $h$ ist ebenfalls linear und eine Tangente zur Funktion $f$ an der Stelle $(-0.5, \text{?})$
+- Funktion $h$ schneidet Funktion $f$ auf der x-Achse; beide Funktionen besitzen daher auch eine gemeinsame Nullstelle bei $x_3$
+
+Was hiervon gebraucht wird, hängt stark von unserem Ansatz ab. 
+
+## Lösungen
+
+### Mithilfe einer Ableitung
+
+Die Funktionswerte einer linearen Funktion werden durch $ax + b$ produziert. Für $g$ schreiben wir
+
+$$
+g(x) = ax + b_g.
+$$ {#eq-g-func}
+
+Weil $g \parallel h$, wissen wir, dass die Steigung von $g$ und $h$ dieselbe ist. Daher können wir zuerst $a$ mithilfe von $h$ bestimmen. Das ist möglich, weil die Tangente $h$ an der Stelle $x = -0.5$ dieselbe Steigung wie $f$ hat. Diese lässt sich wiederum leicht durch die erste Ableitung von $f$ finden. Für die Funktionswerte der ersten Ableitung $f^\prime$ ergibt sich
+
+$$
+f^\prime(x) = x^2 - \frac{4}{3}x - \frac{5}{3}.
+$$ {#eq-f-der}
+
+Nun können wir die Steigung berechnen. Damit wir ohne Taschenrechner auskommen, verwenden wir $-\frac{1}{2}$ statt $-0.5$ und rechnen fröhlich mit Brüchen:
+
+$$
+\begin{equation*}
+\begin{split}
+f^\prime\left(-\frac{1}{2}\right) &= \left(-\frac{1}{2}\right)^2 - \frac{4}{3} \left(-\frac{1}{2}\right) - \frac{5}{3} \\
+    &= \frac{1}{4} + \frac{2}{3} - \frac{5}{3} \\
+    &= \frac{1}{4} - \frac{3}{3} \\
+    &= \frac{1}{4} - 1 \\
+    &= \frac{1}{4} - \frac{4}{4} \\
+    &= -\frac{3}{4}
+\end{split}
+\end{equation*}
+$$ {#eq-slopeder}
+
+Dadurch können wir nun @eq-g-func als
+
+$$
+g(x) = -\frac{3}{4}x + b_g
+$$ {#eq-g-nobg}
+
+schreiben. Jetzt fehlt lediglich der Achsenabschnitt $b_g$. Den können wir einfach als $-1$ ablesen. Jetzt haben wir alles beisammen, um $g$ zu bestimmen. Wir ersetzten nun $b_g$ in @eq-g-nobg ein und bekommen
+
+$$
+g(x) = -\frac{3}{4}x -1.
+$$
+
+In der formal korrekten Schreibweise ist die Funktion
+
+$$
+\boxed{
+    g: x \mapsto -\frac{3}{4}x -1
+}
+$$
+
+nun vollständig bestimmt.
+
+### Ohne Ableitung
+
+Hier bestimmen wir die Steigung von $h$, ohne die erste Ableitung von $f$ zu verwenden. Für eine lineare Funktion brauchen wir nämlich nur zwei Punkte $P_{\text{i}} = (x_{\text{i}}, y_{\text{i}})$ und $P_{\text{f}} = (x_{\text{f}}, y_{\text{f}})$, die auf dem Geraden von $h$ liegen. Die Steigungsberechnung ist dann 
+
+$$
+a = \frac{\Delta y}{\Delta x} = 
+    \frac{y_{\text{f}} - y_{\text{i}}}{x_{\text{f}} - x_{\text{i}}}.
+$$ {#eq-slope}
+
+Dabei steht **i** für den initiale oder Anfangspunkt und **f** für den finalen oder Endpunkt. Dies zwei Punkten wählen wir so, dass wir sie möglichst einfach bestimmen. 
+
+Der erste Punkt ist die Stelle, an der $h$ als Tangente $f$ berührt. Dort gilt für die x-Komponente $x_{\text{i}} = -0.5$ und für die y-Komponente  
+
+$$
+\begin{align*}
+    y_{\text{i}} = h(-0.5) &= f(-0.5) \\
+        &= \frac{1}{3}\left(-\frac{1}{2}\right)^3 - \frac{2}{3}\left(-\frac{1}{2}\right)^2 - \frac{5}{3}\left(-\frac{1}{2}\right) + 2 \\
+        &= -\frac{1}{6}\left(-\frac{1}{2}\right)^2 + \frac{2}{6}\left(-\frac{1}{2}\right) + \frac{5}{6} + \frac{12}{6} \\
+        &= \frac{1}{6} \left( -\frac{1}{4} - 1 + 5 + 12 \right) \\
+        &= \frac{1}{6} \left( -\frac{1}{4} + 16 \right) \\
+        &= \frac{1}{6} \left( -\frac{1}{4} + \frac{64}{4} \right) \\
+        &= \frac{63}{24} = \frac{21}{8}
+\end{align*}
+$$
+
+Die gemeinsame Nullstelle von $h$ und $f$ bietet sich als finaler Punkt an. Deren y-Koordinate ist aufgrund der Nullstelle $y_{\text{f}} = 0$ aber die x-Koordinate kennen wir noch nicht. Wir wissen jedoch, dass eine Nullstelle von $f$ die x-Koordinate $x_2 = 1$ hat. Nun nutzen wir die Polynomdivision, um die restlichen gesuchte Nullstelle zu bestimmen; darunter wird auch unser finaler Punkt für die Steigungsberechnung sein. Die bekannte Nullstelle $x_2 = 1$ benutzen wir im Divisor $x - 1$. Die Polynomdivision ergibt:
+
+$$
+\def\arraystretch{2}
+\begin{darray}{r}
+    \bigg( \frac{1}{3}x^3 - \frac{2}{3}x^2 - \frac{5}{3}x +2 \bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2 \phantom{\bigg)} \\
+    \underline{- \bigg( \frac{1}{3}x^3 -\frac{1}{3}x^2 \bigg)} \phantom{- \frac{5}{3}x +2 \bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2} \\
+    \phantom{\frac{1}{3}x^3} -\frac{1}{3}x^2 -\frac{5}{3}x \phantom{\bigg)} \phantom{+2 \bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2} \\
+    \phantom{\frac{1}{3}x^3} \underline{-\bigg( -\frac{1}{3}x^2 +\frac{1}{3}x \bigg)} \phantom{+2 \bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2} \\
+    \phantom{\frac{1}{3}x^3 -\frac{1}{3}x^2} -\frac{6}{3}x +2 \phantom{\bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2} \phantom{\bigg)}\\
+    \phantom{\frac{1}{3}x^3 -\frac{1}{3}x^2} \underline{-\bigg(-2x -2\bigg)} \phantom{\bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2} \\
+    \phantom{\frac{1}{3}x^3 -\frac{1}{3}x^2 -\bigg(-2x -} 0 \phantom{\bigg)\bigg) : (x - 1) = \frac{1}{3}x^2 - \frac{1}{3}x - 2}
+\end{darray}
+$$
+
+Daraus folgt, dass wir $f$ auch so schreiben können
+
+$$
+f: x \mapsto \left( x - 1 \right) \left( \frac{1}{3}x^2 - \frac{1}{3}x - 2 \right).
+$$
+
+Jetzt lösen wir die quadratische Gleichung
+
+$$
+\frac{1}{3}x^2 - \frac{1}{3}x - 2 = 0,
+$$ {#eq-quad}
+
+um die restlichen zwei Nullstellen zu bestimmen. Wir benutzen die abc-Formel
+
+$$
+x_{1,3} = \frac{-b \pm \sqrt{D}}{2a}
+$$ {#eq-abc}
+
+mit der Determinante
+
+$$
+\begin{align*}
+D = b^2 - 4ac &= \left( -\frac{1}{3} \right)^2 - 4 \left( \frac{1}{3} \right) (-2) \\
+    &= \frac{1}{9} + \frac{8}{3} \\
+    &= \frac{25}{9}.
+\end{align*}
+$$
+
+Die Wurzel der Determinante ist 
+
+$$
+\sqrt{D} = \sqrt{\frac{25}{9}} = \frac{5}{3}
+$$
+
+und in @eq-abc mit den übrigen Variablen aus @eq-quad eingesetzt ergibt sich
+
+$$
+x_{1,3} = \frac{-\left(-\dfrac{1}{3}\right) \pm \dfrac{5}{3}}{2\dfrac{1}{3}} = 
+    \frac{1 \pm 5}{2}.
+$$
+
+Hierdurch erhalten wir $x_1 = 3$ und $x_3 = -2$. Somit besitzt unser finaler Punkt die Koordinaten $x_{\text{f}} = 3$ und $y_{\text{f}} = 0$. Jetzt können wir unseren initialen und finalen Punkt in @eq-slope einsetzen.
+
+$$
+a = \frac{\Delta y}{\Delta x} = 
+    \frac{0 - \dfrac{21}{8}}{3 - \left( -\dfrac{1}{2} \right)} = -\frac{\dfrac{21}{8}}{\dfrac{7}{2}} = -\frac{3}{4}
+$$ {#eq-slopecalc}
+
+Dies entspricht genau @eq-slopeder und von hier aus ergibt sich mit dem Achsenabschnitt $b_{\text{g}}$ genau daselbe Ergebnis
+
+$$
+\boxed{
+    g: x \mapsto -\frac{3}{4}x -1
+}
+$$
+
+wie bei der Lösung mithilfe der ersten Ableitung. 
+
+## Fazit
+
+Hieraus wird ersichtlich welche Macht die Differentialrechnung bietet. Bei der zweiten Lösung mussten wir mühsam die einzelnen Punkte für die Steigungsberechnung ermitteln, um anschliessend die Steigung von $h$ und $g$ zu ermitteln. 
+
+Dieser Weg ließ sich in der ersten Lösung erheblich durch das Bilden der ersten Ableitung abkürzen. Die erste Ableitung kann uns die Steigung einer Funktion an einer spezifischen Stelle direkt liefern. Das ist ine großer Vorteil gegenüber der Steigungsformel, die streng genommen sowieso nur für lineare Funktionen der tatsächlichen Steigung entspricht.    
